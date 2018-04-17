@@ -16,6 +16,7 @@
 <html>
     <head>
       <title>product Page</title>
+      
     </head>
     <body>
       <%
@@ -191,43 +192,7 @@ System.out.println("Creating statement...");
 %>
 
               <!-- Reviews -->
-              <div class="col-12" id="reviews">
-                  <div class="card border-light mb-3">
-                      <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-comment"></i> Reviews</div>
-                      <div class="card-body">
-                          <div class="review">
-                              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                              <meta itemprop="datePublished" content="01-01-2016">January 01, 2018
 
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              by Paul Smith
-                              <p class="blockquote">
-                                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                              </p>
-                              <hr>
-                          </div>
-                          <div class="review">
-                              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                              <meta itemprop="datePublished" content="01-01-2016">January 01, 2018
-
-                              <span class="fa fa-star" aria-hidden="true"></span>
-                              <span class="fa fa-star" aria-hidden="true"></span>
-                              <span class="fa fa-star" aria-hidden="true"></span>
-                              <span class="fa fa-star" aria-hidden="true"></span>
-                              <span class="fa fa-star" aria-hidden="true"></span>
-                              by Paul Smith
-                              <p class="blockquote">
-                                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                              </p>
-                              <hr>
-                          </div>
-                      </div>
-                  </div>
-              </div>
           </div>
       </div>
 
@@ -263,6 +228,11 @@ System.out.println("Creating statement...");
 
     </div>
   </div>
+  <h1 class="text-center "> Reviews</h1>
+  <div class="container">
+  <div id="disqus_thread"></div>
+</div>
+
       <jsp:include page="includes/footer.html"/>
 
       <script>
@@ -287,5 +257,47 @@ System.out.println("Creating statement...");
   });
 
       </script>
+
+
+
+      <script>
+
+
+
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+      var disqus_config = function () {
+      this.page.url = "http://localhost:8080/build/shipments/product.js"  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = <%out.print(request.getParameter("productName"));%> // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://foushecommerce.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+      </script>
+
+
+
+
+
+
+
+
+
+<script id="dsq-count-scr" src="//foushecommerce.disqus.com/count.js" async></script>
     </body>
 </html>

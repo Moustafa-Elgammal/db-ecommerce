@@ -6,11 +6,11 @@ String pageName = uri.substring(uri.lastIndexOf("/")+1);
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>JSP Page</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="../Design/shipments/css/bootstrap4.css" rel="stylesheet" id="bootstrap-css">
+      <script src="../Design/shipments/js/jquery3.2.1.js"></script>
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+<script src="../Design/shipments/js/bootstrap4.js"></script>
+<link type="text/css" href="../Design/shipments/css/fontawesome-all.min.css"  rel="stylesheet">
     <link rel="stylesheet" href="../Design/shipments/css/main.css" />
 
 </head>
