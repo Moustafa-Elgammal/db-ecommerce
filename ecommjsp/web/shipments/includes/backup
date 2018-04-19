@@ -1,0 +1,95 @@
+//
+// database work
+//
+try{
+  // JDBC driver name and database URL
+   String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+   String DB_URL = "jdbc:mysql://localhost/Ecommerce";
+
+  //  Database credentials
+   final String USER = "root";
+   final String PASS = "";
+ // open a connection
+  Connection conn = null;
+  Class.forName("com.mysql.jdbc.Driver");  // load the driver
+  System.out.println("Connecting to database...");
+  conn = DriverManager.getConnection(DB_URL,USER,PASS);
+// create the sql command
+System.out.println("Creating statement...");
+
+  PreparedStatement prep = conn.prepareStatement("Select * from products_t");
+
+  ResultSet rs = prep.executeQuery();
+  // process results one row at a timne
+  while(rs.next())
+  {
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card" style="margin-bottom: 20px;">
+                            <img class="card-img-top" src="../Design/shipments/images/fff.png" alt="Card image cap">
+                            <div class="card-body">
+                            <%out.println("<h4 class='card-title'>"+"<a href='product.jsp' title='View Product'>"+rs.getString(2)+"</a>"+"</h4>");%>
+                            <%out.println("<p>"+rs.getString(3)+"</p>");%>
+                                <div class="row">
+                                    <div class="col">
+                                          <%out.println("<p class='btn btn-danger btn-block'>"+rs.getString(4)+"$"+"</p>");%>
+                                    </div>
+                                    <div class="col">
+                                        <%
+                                        String name =rs.getString(2);
+                                        name = java.net.URLEncoder.encode(name, "UTF-8");  // fix name into a url ok
+                                        String price=rs.getString(4);
+                                         %>
+
+                                         <%out.println("<a class='btn btn-success btn-block add' href='index.jsp?id="+rs.getString(1)+"&name="+name+"&quantity=1"+"&weight="+rs.getString(6)+"&price="+price+
+                                                      "'>Add to cart</a>");%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+  <%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul class="pagination">
+    <li class="disabled"><a href="#">«</a></li>
+
+         <% for(int i = 1; i <= Math.ceil(cart.num()/5); i+=1) { %>
+             <li>
+                 <a href="?page=<%= i%>"><%= i%></a>
+             </li>
+         <% } %>
+
+      <li><a href="#">»</a></li>
+
+  </ul>
+
+
+
+Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
+
+
+
+
+
+
+
+
+
+  <%out.println("<a"+ "href=product.jsp?productName="+rs.getString(2)+ "title=View Product>""+rs.getString(2)+"</a>");%>
