@@ -72,11 +72,7 @@ System.out.println("Creating statement...");
   // process results one row at a timne
   while(rs.next())
   {
-%>
-
-
-
-                  <div class="col-12 col-md-6 col-lg-4">
+%>                  <div class="col-12 col-md-6 col-lg-4">
                       <div class="card" style="margin-bottom: 20px;">
                           <img class="card-img-top" src="../Design/shipments/images/fff.png" alt="Card image cap">
                           <div class="card-body">
@@ -136,38 +132,10 @@ System.out.println("Creating statement...");
   }
  %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 </div>
 </div>
 </div>
  <jsp:include page="includes/footer.html"/>
-
-
-
-
-
-
-
-
-
-
-
-
     </body>
 </html>
