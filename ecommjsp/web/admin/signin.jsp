@@ -9,6 +9,14 @@
 <% Class.forName("com.mysql.jdbc.Driver"); %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<%
+    
+     if (session.getAttribute("id") != null){
+            response.sendRedirect("index.jsp");
+    }
+     
+
+    %>
 <%!
   public  class DB_connection {
     String url = "jdbc:mysql://localhost:3306/Ecommerce";
@@ -64,10 +72,8 @@
     
 }
 %>
+
 <%
-     if (session.getAttribute("id") != null){
-            response.sendRedirect("index.jsp");
-    }
      
     DB_connection db = new DB_connection();
     String Query;

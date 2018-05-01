@@ -1,15 +1,80 @@
 <%-- 
     Document   : index
     Created on : May 1, 2018, 4:56:44 AM
-    Author     : maxxi
+    Author     : Moustafa
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.Date" %>
+<% Class.forName("com.mysql.jdbc.Driver"); %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <%
       if (session.getAttribute("id") == null){
             response.sendRedirect("signin.jsp");
     }  
+%>
+
+
+<%!
+  public  class DB_connection {
+    String url = "jdbc:mysql://localhost:3306/Ecommerce";
+    String username = "root";
+    String password = "";
+
+    Connection connection = null;
+    PreparedStatement user = null;
+    ResultSet resultSet = null;
+
+    public  DB_connection() {
+      try {
+        connection = DriverManager.getConnection(url, username, password);
+
+      } catch (SQLException e){
+         //("connection exception");
+      }
+    }
+
+
+
+    
+    public boolean setQuery(String Query) {
+      try {
+        user = connection.prepareStatement(Query);
+        return true;
+      } catch (SQLException e){
+        return false;
+      }
+    }
+
+    
+    public ResultSet getResults (){
+
+      try {
+        resultSet = user.executeQuery();
+      } catch (SQLException e){
+
+      }
+
+      return resultSet;
+    }
+
+
+    public ResultSet executeQueryGetResults(String Query){
+        setQuery(Query);
+        return getResults();
+    }
+      
+}
+%>
+
+<%
+     
+    DB_connection db = new DB_connection();
+    String Query;
+    ResultSet results;
 %>
 <html lang="en">
 <head>
@@ -18,7 +83,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Paper Dashboard by Creative Tim</title>
+	<title>Admin | Dashboard</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -56,8 +121,8 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                <a href="#" class="simple-text">
+                   Ecommerce
                 </a>
             </div>
 
@@ -71,8 +136,15 @@
                 
                 <li>
                     <a href="customers.jsp">
-                        <i class="ti-user"></i>
-                        <p>User Profile</p>
+                        <i class="fa fa-users"></i>
+                        <p>Customers</p>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="products.jsp">
+                        <i class="ti-package"></i>
+                        <p>Products</p>
                     </a>
                 </li>
                 
@@ -155,7 +227,13 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Products</p>
-                                            105 K
+                <%
+                                   Query = "SELECT SUM(product_amount) as sum, Count(product_amount) as count FROM vendor_t_has_products_t";
+                                  results = db.executeQueryGetResults(Query);
+                                  while(results.next()){
+                %>
+                 <%= results.getInt("count") +"; "+ results.getInt("sum")%> 
+                <%}%>
                                         </div>
                                     </div>
                                 </div>
@@ -204,8 +282,14 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>reports</p>
-                                            23
+                                            <p>Orders</p>
+                                            <%
+                                   Query = "SELECT COUNT(custmers_t_custmer_id) as count FROM custmers_t_has_orders_t";
+                                  results = db.executeQueryGetResults(Query);
+                                  while(results.next()){
+                %>
+                <%=  results.getInt("count")%>
+                <%}%>
                                         </div>
                                     </div>
                                 </div>
@@ -230,7 +314,14 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Customers</p>
-                                            +45
+<%
+                                   Query = "SELECT COUNT(custmer_id) as count FROM custmers_t";
+                                  results = db.executeQueryGetResults(Query);
+                                  while(results.next()){
+                %>
+                    <%=  results.getInt("count")
+                    %>
+                <%}%>
                                         </div>
                                     </div>
                                 </div>
