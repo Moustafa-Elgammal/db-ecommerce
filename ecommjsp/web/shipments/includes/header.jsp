@@ -10,10 +10,12 @@ String pageName = uri.substring(uri.lastIndexOf("/")+1);
       <script src="../Design/shipments/js/jquery3.2.1.js"></script>
 
 <script src="../Design/shipments/js/bootstrap4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 <link type="text/css" href="../Design/shipments/css/fontawesome-all.min.css"  rel="stylesheet">
     <link rel="stylesheet" href="../Design/shipments/css/main.css" />
 
 </head>
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="index.html">Simple Ecommerce</a>

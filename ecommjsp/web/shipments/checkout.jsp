@@ -18,6 +18,14 @@
 <html>
   <head>
       <title>Checkout Page</title>
+
+      <style>
+          body{
+            background: #f8f9fa!important;
+          }
+          
+
+      </style>
   </head>
     <body>
 <%
@@ -76,7 +84,7 @@ out.println("<div class='btn btn-success'>"+destZone+"</div>");
           </div>
       </section>
       <div class="container test-center">
-      <h1 class="text-center alert-success" >Cart info</h1>
+      <%-- <h1 class="text-center alert-success" >Cart info</h1> --%>
     </div>
       <%
        //
@@ -104,9 +112,14 @@ out.println("<div class='btn btn-success'>"+destZone+"</div>");
         {
           out.println("Error: "+ ex.toString()+ "<br/>");
         }
-        cart.display(out,firstKiloCost,secondKiloCost);
+        // cart.display(out,firstKiloCost,secondKiloCost);
+         out.println("<h1 class='text-center alert-info' style='margin-bottom:50px;margin-top:50px;'>Insert checkout info below</h1>");
+
+    cart.checkoutdisplay(out,firstKiloCost,secondKiloCost);
+
        %>
-       <jsp:include page="includes/postalAddressform.html"/>
+
+       <jsp:include page="includes/postalAddressform.jsp"/>
 
 
 

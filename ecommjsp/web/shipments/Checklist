@@ -1,0 +1,49 @@
+1-First page for Me was  {index.jsp}
+
+======front end work======
+include
+        *Header
+        *jumbotron
+        *breadcrumb   <for navigation throw the website>
+        *sidebar      <to navigate product based on category
+
+
+
+======back end work=======
+Select
+      *All products in the page so the user can see and add them to his Cart
+
+
+2-Second page {Cart.jsp}
+
+======front end work======
+It can be accessed throw {index.jsp} when the user click the button with cart icon
+
+The Page contains
+                  *Table showing products that our user added to the Cart
+                          *image
+                          *Name
+                          *quantity
+                          *price
+                          *weight
+                          *Total Price
+                          *button to remove the product from the cart
+
+                    *Two buttons
+                          *Continue shopping -> return to index.jsp
+                          *checkOut           -> Go to checkout.jsp
+
+
+======back end work=======
+*remove the item from the cart By using the remove method from the ShoppingCart Class
+
+3-third page {Checkout.js}
+
+======front end work======
+It can be accessed throw {Cart.JSP} when the user click the button checkout
+
+The Page contains
+
+
+
+======back end work=======

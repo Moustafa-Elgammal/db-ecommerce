@@ -45,7 +45,7 @@
       // create the sql command
       System.out.println("Creating statement...");
 
-          PreparedStatement prep = conn.prepareStatement("Select * from products_t WHERE product_name=?");
+          PreparedStatement prep = conn.prepareStatement("Select * from products_t WHERE product_name like ?");
           prep.setString(1,productName);
 
           ResultSet rs = prep.executeQuery();
